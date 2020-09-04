@@ -153,13 +153,22 @@
 
     <script>
         const panels = document.querySelectorAll('.panel');
-
+        // function to open panel
         function toggleOpen() {
             console.log('Hello');
             this.classList.toggle('open');
         }
-
+        // when panel is opened, display children with flex
+        function toggleActive(e) {
+            console.log(e.propertyName);
+            if (e.propertyName.includes('flex')) {
+                this.classList.toggle('open-active');
+            }
+        }
+        // listen for click on panel
         panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        // triggers when panel is opened
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
     </script>
 
 
